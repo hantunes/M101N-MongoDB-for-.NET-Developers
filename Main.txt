@@ -8,7 +8,7 @@ C:\>md mongo
 C:\mongo>md \data
 C:\mongo>md \data\db
 
-
+mongorestore  --> correr dentro da pasta que contiver o dump folder 
 ----------------------
 
 use test  --> para usar a Database
