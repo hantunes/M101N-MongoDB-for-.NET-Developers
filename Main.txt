@@ -8,10 +8,12 @@ C:\>md mongo
 C:\mongo>md \data
 C:\mongo>md \data\db
 
-mongorestore  --> correr dentro da pasta que contiver o dump folder 
+
 ----------------------
 
 use test  --> para usar a Database
+mongorestore  --> correr dentro da pasta que contiver o dump folder 
+show collections 
 
 db.things.save({a:1 , b:2 , c:3})
 db.things.find()
