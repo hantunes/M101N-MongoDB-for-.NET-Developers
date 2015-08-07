@@ -1,0 +1,22 @@
+-----shell -----
+------mongo------
+mongo.exe --> shell
+mongod.exe --> server 
+
+criar as pastas para por os dados
+C:\>md mongo
+C:\mongo>md \data
+C:\mongo>md \data\db
+
+
+----------------------
+
+use test  --> para usar a Database
+
+db.things.save({a:1 , b:2 , c:3})
+db.things.find()
+db.things.find({a:1})
+db.things.save({a:1 , b:2 , c:3, fruit: ["apple", "orange","pear"]})
+db.things.find().pretty() --> mostra de forma mais bonita
+
+------Json------
