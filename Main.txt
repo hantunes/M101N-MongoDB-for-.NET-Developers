@@ -13,6 +13,8 @@
  -Docs-
  doc = {"name":"Smith","age":30,"Profession":"hacker"}
  db.people.insert(doc)
+ db.people.findOne({"name":"Smith"})  
+ db.people.findOne({"name":"Smith"},{"name":true,"_id":false})
  
 ------mongo------
 mongo.exe --> shell
