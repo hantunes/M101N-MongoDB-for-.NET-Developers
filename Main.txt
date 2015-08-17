@@ -1,4 +1,10 @@
 -----shell -----
+ for(i=10;i<13;i++) print(i)
+ 
+ y = 1
+ z= {a:1} {"a":1}
+ z.a
+ 
 ------mongo------
 mongo.exe --> shell
 mongod.exe --> server 
