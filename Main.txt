@@ -62,7 +62,12 @@ db.arrays.update({_id:0},{$addAt:{a:5}}) adiciona se n existir
 --Upserts--
 db.people.update({name:"Alice"},{$set: {"age":30}},{upsert:true})  // update ou insert se n existir
 --Multi-update--
-db.people.update({name:"Alice"},{$set: {"age":30}},{upsert:true})  // update ou insert se n existir
+db.people.update({},{$set: {"title":"DR}"},{multi:true})  // update todos
+--Removing--
+db.people.remove({"name":"Alice}"})
+db.people.remove({}) // remove todos
+db.people.drop()//
+ 
 
 ------mongo------
 mongo.exe --> shell
