@@ -2,7 +2,7 @@
  for(i=10;i<13;i++) print(i)
  
  y = 1
- z= {a:1} {"a":1}
+ z= {a:1}
  z.a
  
  obj={"a":1,"b":"hello","c":["apples","tomatoes"]}
@@ -17,8 +17,53 @@
  db.people.findOne({"name":"Smith"},{"name":true,"_id":false})
  --Querying Using $gt and $lt-- $gte $lte
  db.scores.find( {score: { $gt:95, $lte:98 } })
+ db.people.find( {name: { $lt:"D", $gt:"B" } })
+--Using regexes, $exists, $type--
+ db.people.find( {profession: { $exists:true }) // campo profession exist
+ db.people.find( {name: { $type:2 })  // tipo string
+ db.people.find( {name: { $regex:"a" }) contem a
+ db.people.find( {name: { $regex:"a$" }) STRING termina com a
+ db.people.find( {name: { $regex:"^A" }) string  start com A
+--Using $or--
+db.scores.find({ $or:[{score:{$lt:50}},{score:{$gt:90}}] })
+--Using $and--
+db.people.find({ $and:[{name:{$gt:"c"}},{name:{$regex:"a"}}] })
+ --Querying Inside Arrays) $in $all --
+db.accounts.find({favorites:{$all :["pretzels","beer"]}}) tem de ter os dois
+db.accounts.find({name:{$in :["Howard","ice cream"]}})
+
+db.users.find({"email.work":"hantunes@gmail.com"})
+ --Querying, Cursors--
+ cur = db.people.find();null; //o null é para mostrar no ecra
+ cur.hasNext()
+ cur.next()
+ cur.limit(5);null; //limita a retornar 5 
+ cur.sort({name:-l});null;
+ cur.skip(2);null; // descarta os 2 primeiros
+ --counting-- 
+ db.scores.count({type:"exam"})
  
- 
+ -- UPDATE--
+ db.people.update({name:"Smith"},{name:"HUGO",salary:5000}) // procura o smith e actualiza com HUGO
+ -- SET e INC--*
+ db.people.update({name:"Alice"},{$set: {"age":30}})  //modifica ou acrensceta campo
+ db.people.update({name:"Alice"},{$inc: {"age":31}}) // modifica
+ --unset--
+ db.people.update({name:"Alice"},{$unset: {"age":31}})
+ --Using $push, $pop, $pull, $pushAll, $pullAll, $addToSet-- 
+db.arrays.insert({_id:0,a:[1,2,3,4]})
+> db.arrays.update({_id:0},{$set:{"a.2":5}})
+db.arrays.update({_id:0},{$pop:{a:1}}) // remove um do fim
+db.arrays.update({_id:0},{$pop:{a:-1}}) // remove um do inicio
+db.arrays.update({_id:0},{$pushAll:{a:[7,8,9]}}) // insere todos
+db.arrays.update({_id:0},{$pull:{a:5}}) // remove o elementos com o valor 5
+db.arrays.update({_id:0},{$pullAll:{a:[7,8,9]}}) remove todos os elenetos com os valores
+db.arrays.update({_id:0},{$addAt:{a:5}}) adiciona se n existir
+--Upserts--
+db.people.update({name:"Alice"},{$set: {"age":30}},{upsert:true})  // update ou insert se n existir
+--Multi-update--
+db.people.update({name:"Alice"},{$set: {"age":30}},{upsert:true})  // update ou insert se n existir
+
 ------mongo------
 mongo.exe --> shell
 mongod.exe --> server 
