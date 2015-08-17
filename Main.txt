@@ -5,6 +5,15 @@
  z= {a:1} {"a":1}
  z.a
  
+ obj={"a":1,"b":"hello","c":["apples","tomatoes"]}
+ NumberInt(1)
+ NumberLong(1)
+ new Date()
+ obj={"a":1,"b":ISODate("2015-08-17T16:35:31.179Z"),"c":NumberLong(42)}
+ -Docs-
+ doc = {"name":"Smith","age":30,"Profession":"hacker"}
+ db.people.insert(doc)
+ 
 ------mongo------
 mongo.exe --> shell
 mongod.exe --> server 
