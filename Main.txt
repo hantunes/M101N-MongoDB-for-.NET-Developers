@@ -15,6 +15,9 @@
  db.people.insert(doc)
  db.people.findOne({"name":"Smith"})  
  db.people.findOne({"name":"Smith"},{"name":true,"_id":false})
+ --Querying Using $gt and $lt-- $gte $lte
+ db.scores.find( {score: { $gt:95, $lte:98 } })
+ 
  
 ------mongo------
 mongo.exe --> shell
