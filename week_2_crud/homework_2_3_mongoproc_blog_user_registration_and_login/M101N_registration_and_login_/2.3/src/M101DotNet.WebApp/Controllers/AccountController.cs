@@ -34,8 +34,8 @@ namespace M101DotNet.WebApp.Controllers
             }
 
             var blogContext = new BlogContext();
-            // XXX WORK HERE
             // fetch a user by the email in model.Email
+            User user = await blogContext.Users.Find(Builders<User>.Filter.Eq(x => x.Email, model.Email)).SingleOrDefaultAsync();
 
             if (user == null)
             {
@@ -83,8 +83,13 @@ namespace M101DotNet.WebApp.Controllers
             }
 
             var blogContext = new BlogContext();
-            // XXX WORK HERE
             // create a new user and insert it into the database
+            var user = new User
+            {
+                Email = model.Email,
+                Name = model.Name
+            };
+            await blogContext.Users.InsertOneAsync(user);
 
             return RedirectToAction("Index", "Home");
         }
