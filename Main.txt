@@ -1,4 +1,9 @@
 -----shell -----
+
+---MULTIKEYS INDEX---
+db.students.ensureIndex({'teachers':1})
+---
+
  for(i=10;i<13;i++) print(i)
  
  y = 1
