@@ -88,6 +88,8 @@ C:\mongo>md \data\db
 
 use test  --> para usar a Database
 mongorestore  --> correr dentro da pasta que contiver o dump folder 
+mongorestore --collection people --db accounts dump/accounts/people.bson
+
 show collections 
 
 db.things.save({a:1 , b:2 , c:3})
